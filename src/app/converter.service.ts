@@ -24,7 +24,7 @@ export class ConverterService {
       const blanker = BlankerFactory.getBlankerInstance(b);
       const formatter = FormatterFactory.getFormatterInstance(f);
       let sa = splitter.split(s);
-      let sac = sa.map(s => blanker.blank(s));
+      let sac = sa.filter(s => s.length > 0).map(s => blanker.blank(s));
       return formatter.format(sac);
   }
 

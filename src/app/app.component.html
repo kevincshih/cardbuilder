@@ -1,0 +1,21 @@
+<textarea [(ngModel)]="text" rows="10"></textarea>
+<table>
+    <tr>
+        <td>Splitter</td>
+        <td>&nbsp;</td>
+        <td><select [(ngModel)]="splitter"><option *ngFor="let s of splitters">{{s}}</option></select></td>        
+    </tr>
+    <tr>
+        <td>Blanker</td>
+        <td>&nbsp;</td>
+        <td><select [(ngModel)]="blanker"><option *ngFor="let b of blankers">{{b}}</option></select></td>    
+    </tr>
+    <tr>
+        <td>Formatter</td>
+        <td>&nbsp;</td>
+        <td><select [(ngModel)]="formatter"><option *ngFor="let f of formatters">{{f}}</option></select></td>    
+    </tr>
+</table>
+<button (click)="submit()">Submit</button>
+<br />
+<textarea [(ngModel)]="result" class="textresult" rows="10"></textarea>

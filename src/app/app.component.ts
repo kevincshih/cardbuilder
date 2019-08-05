@@ -7,32 +7,15 @@ import { Splitters } from './SplitterFactory';
 
 @Component({
   selector: 'app-root',
-  template: `
-  <textarea [(ngModel)]="text">Enter text here...</textarea>
-  <br />
-  <select [(ngModel)]="splitter">
-  <option *ngFor="let s of splitters">{{s}}</option>
-  </select>
-  <br />
-  <select [(ngModel)]="blanker">
-  <option *ngFor="let b of blankers">{{b}}</option>
-  </select>
-  <br />
-  <select [(ngModel)]="formatter">
-  <option *ngFor="let f of formatters">{{f}}</option>
-  </select>
-  <br />
-  <button (click)="submit()">Submit</button>
-  <br />
-  <textarea [(ngModel)]="result" [readonly]="true"></textarea>
-  `
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public text: String = '';
+  public text: String = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
   public result: String = '';
-  public blankers: Blankers[] = ['random'];
-  public formatters: Formatters[] = ['csv'];
-  public splitters: Splitters[] = ['sentence'];
+  public blankers: Blankers[] = ['random', 'max'];
+  public formatters: Formatters[] = ['csv', 'json'];
+  public splitters: Splitters[] = ['sentence', 'paragraph'];
   public blanker: Blankers;
   public formatter: Formatters;
   public splitter: Splitters;
