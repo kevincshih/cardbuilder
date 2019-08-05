@@ -1,6 +1,5 @@
-import { ICard } from './ICard';
-import { IFormatter } from './IFormatter'
+import { Card } from './Card';
 
-export abstract class Formatter implements IFormatter {
-    abstract format(c: ICard[]): String;
+export interface Formatter{
+    format(c: Card[]): String;
 }

@@ -9,6 +9,9 @@ import { CSVFormatter } from './CSVFormatter';
 import { RandomBlanker } from './RandomBlanker';
 import { SentenceSplitter } from './SentenceSplitter';
 import { ConverterService } from './converter.service';
+import { BlankerFactory } from './BlankerFactory';
+import { FormatterFactory } from './FormatterFactory';
+import { SplitterFactory } from './SplitterFactory';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,7 @@ import { ConverterService } from './converter.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [CSVFormatter, RandomBlanker, SentenceSplitter, ConverterService],
+  providers: [BlankerFactory, FormatterFactory, SplitterFactory, ConverterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

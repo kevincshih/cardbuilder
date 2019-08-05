@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ISplitter } from './ISplitter';
-import { IBlanker } from './IBlanker';
-import { IFormatter } from './IFormatter';
+import { SplitterFactory, Splitters } from './SplitterFactory';
+import { BlankerFactory, Blankers } from './BlankerFactory';
+import { FormatterFactory, Formatters } from './FormatterFactory';
 
 
 @Injectable({
@@ -9,20 +9,23 @@ import { IFormatter } from './IFormatter';
 })
 export class ConverterService {
 
-  readonly splitter: ISplitter;
-  readonly blanker: IBlanker;
-  readonly formatter: IFormatter;
+  readonly splitterFactory: SplitterFactory;
+  readonly blankerFactory: BlankerFactory;
+  readonly formatterFactory: FormatterFactory;
 
-  constructor(s: ISplitter, b: IBlanker, f: IFormatter) {
-    this.splitter = s;
-    this.blanker = b;
-    this.formatter = f;
+  constructor(s: SplitterFactory, b: BlankerFactory, f: FormatterFactory) {
+    this.splitterFactory = s;
+    this.blankerFactory = b;
+    this.formatterFactory = f;
   }
 
-  convert(s: String): String{
-      let sa = this.splitter.split(s);
-      let sac = sa.map(s => this.blanker.blank(s));
-      return this.formatter.format(sac);
+  convert(s: String, sp: Splitters = null, b: Blankers = null, f: Formatters = null): String{
+      const splitter = SplitterFactory.getSplitterInstance(sp);
+      const blanker = BlankerFactory.getBlankerInstance(b);
+      const formatter = FormatterFactory.getFormatterInstance(f);
+      let sa = splitter.split(s);
+      let sac = sa.map(s => blanker.blank(s));
+      return formatter.format(sac);
   }
 
 }

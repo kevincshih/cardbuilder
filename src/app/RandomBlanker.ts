@@ -1,10 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 import { Blanker } from './Blanker';
-import { ICard } from './ICard';
+import { Card } from './Card';
 
 @Injectable()
-export class RandomBlanker extends Blanker {
-    blank(s: String): ICard {
+export class RandomBlanker implements Blanker {
+    blank(s: String): Card {
         let r = Math.random();
         let words = s.split(' ');
         let i = Math.floor(r*words.length);

@@ -1,6 +1,5 @@
-import { ICard } from './ICard';
-import { IBlanker } from './IBlanker'
+import { Card } from './Card';
 
-export abstract class Blanker implements IBlanker {
-    abstract blank(s: String): ICard;
+export interface Blanker{
+    blank(s: String): Card;
 }
